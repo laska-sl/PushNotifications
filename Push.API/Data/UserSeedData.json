@@ -1,0 +1,30 @@
+[
+    {
+        "Username": "Lola",
+        "Password": "password",
+        "Reminders": [
+            {
+                "ResponseTime": "2020-09-01 23:58:00",
+                "Text": "Hello There 1, Lola"
+            },
+            {
+                "ResponseTime": "2020-09-01 23:59:00",
+                "Text": "Hello There 2, Lola"
+            }
+        ]
+    },
+    {
+        "Username": "Bob",
+        "Password": "password",
+        "Reminders": [
+            {
+                "ResponseTime": "2020-09-01 23:58:00",
+                "Text": "Hello There 1, Bob"
+            },
+            {
+                "ResponseTime": "2020-09-01 23:59:00",
+                "Text": "Hello There 2, Bob"
+            }
+        ]
+    }
+]
