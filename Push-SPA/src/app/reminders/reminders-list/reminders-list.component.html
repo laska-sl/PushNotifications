@@ -1,3 +1,7 @@
-<p>
-  reminders-list works!
-</p>
+<div class="container mt-5">
+  <div class="row">
+    <div *ngFor="let reminder of reminders" class="col-lg-2 col-md-3 col-sm-6">
+      <app-reminders-card [reminder]="reminder"></app-reminders-card>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace DatingApp.API.Helpers
+namespace Push.API.Helpers
 {
     public static class Extensions
     {

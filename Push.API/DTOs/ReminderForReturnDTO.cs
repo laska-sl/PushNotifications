@@ -3,7 +3,7 @@ using Push.API.Models;
 
 namespace Push.API.DTOs
 {
-    public class ReminderForListDTO
+    public class ReminderForReturnDTO
     {
         public int Id { get; set; }
         public DateTime ResponseTime { get; set; }

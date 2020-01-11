@@ -1,13 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PushNotificationsModule } from 'ng-push'; //import the module
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { AuthService } from './_services/auth.service';
+import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { RemindersEditComponent } from './reminders/reminders-edit/reminders-edit.component';
+import { AlertifyService } from './_services/alertify.service';
+import { appRoutes } from './routes';
 import { RemindersListComponent } from './reminders/reminders-list/reminders-list.component';
+import { PushNotificationsModule } from 'ng-push';
+import { AuthGuard } from './guards/auth.guard';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { ReminderService } from './_services/reminder.service';
+import { RemindersCardComponent } from './reminders/reminders-card/reminders-card.component';
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
+
+export class CustomHammerConfig extends HammerGestureConfig {
+   overrides = {
+      pinch: { enable: false },
+      rotate: { enable: false }
+   };
+}
 
 @NgModule({
    declarations: [
@@ -15,14 +38,33 @@ import { RemindersListComponent } from './reminders/reminders-list/reminders-lis
       HomeComponent,
       NavComponent,
       RegisterComponent,
-      RemindersEditComponent,
-      RemindersListComponent
+      RemindersListComponent,
+      RemindersCardComponent
    ],
    imports: [
       BrowserModule,
-      PushNotificationsModule //addittoimports
+      PushNotificationsModule,
+      HttpClientModule,
+      FormsModule,
+      BsDropdownModule.forRoot(),
+      TabsModule.forRoot(),
+      RouterModule.forRoot(appRoutes),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth'],
+         }
+      })
    ],
-   providers: [],
+   providers: [
+      AuthService,
+      ErrorInterceptorProvider,
+      AlertifyService,
+      ReminderService,
+      AuthGuard,
+      { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+   ],
    bootstrap: [
       AppComponent
    ]

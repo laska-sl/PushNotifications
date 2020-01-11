@@ -1,37 +1,23 @@
-import { Component } from '@angular/core';
-import { PushNotificationsService } from 'ng-push';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './_services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from './_models/User';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Web push Notifications!';
-  constructor(private pushNotifications: PushNotificationsService) {
-    this.pushNotifications.requestPermission();
-  }
+export class AppComponent implements OnInit {
+  jwtHelper = new JwtHelperService();
 
-  notify() {
-    // Let's check if the browser supports notifications
-    if (!('Notification' in window)) {
-      alert('This browser does not support desktop notification');
-    }
+  constructor(private authService: AuthService) { }
 
-    // Let's check whether notification permissions have already been granted
-    else if (Notification.permission === 'granted') {
-      // If it's okay let's create a notification
-      const notification = new Notification('Hi there!');
-    }
-
-    // Otherwise, we need to ask the user for permission
-    else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then(permission => {
-        // If the user accepts, let's create a notification
-        if (permission === 'granted') {
-          var notification = new Notification('Hi there!');
-        }
-      });
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
   }
 }

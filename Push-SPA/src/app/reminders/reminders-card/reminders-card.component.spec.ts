@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RemindersEditComponent } from './reminders-edit.component';
+import { RemindersCardComponent } from './reminders-card.component';
 
-describe('RemindersEditComponent', () => {
-  let component: RemindersEditComponent;
-  let fixture: ComponentFixture<RemindersEditComponent>;
+describe('RemindersCardComponent', () => {
+  let component: RemindersCardComponent;
+  let fixture: ComponentFixture<RemindersCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RemindersEditComponent ]
+      declarations: [ RemindersCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RemindersEditComponent);
+    fixture = TestBed.createComponent(RemindersCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

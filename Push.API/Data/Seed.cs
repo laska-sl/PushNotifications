@@ -3,7 +3,7 @@ using System.Linq;
 using Push.API.Models;
 using Newtonsoft.Json;
 
-namespace DatingApp.API.Data
+namespace Push.API.Data
 {
     public class Seed
     {

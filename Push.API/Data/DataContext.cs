@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Push.API.Models;
 
-namespace DatingApp.API.Data
+namespace Push.API.Data
 {
     public class DataContext : DbContext
     {

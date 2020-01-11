@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DatingApp.API.Data;
+using Push.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Push.API.Models;
+using System.Linq;
 
 namespace Push.API.Data
 {
@@ -14,6 +15,7 @@ namespace Push.API.Data
             _context = context;
 
         }
+
         public void Add<T>(T entity) where T : class
         {
             _context.Add(entity);
@@ -22,6 +24,18 @@ namespace Push.API.Data
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
+        }
+
+        public async Task<Reminder> GetReminder(int userId, int id)
+        {
+            var reminder = await _context.Reminders.Where(r => r.UserId == userId).FirstOrDefaultAsync(p => p.Id == id);
+            return reminder;
+        }
+
+        public async Task<IEnumerable<Reminder>> GetReminders(int userId)
+        {
+            var reminders = await _context.Reminders.Where(r => r.UserId == userId).ToListAsync();
+            return reminders;
         }
 
         public async Task<User> GetUser(int id)

@@ -1,8 +1,10 @@
+using System;
+
 namespace Push.API.DTOs
 {
-    public class UserForLoginDTO
+    public class UserForListDTO
     {
+        public int Id { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
     }
 }

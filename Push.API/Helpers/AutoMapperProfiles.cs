@@ -1,16 +1,16 @@
 using System.Linq;
 using AutoMapper;
+using Push.API.DTOs;
 using Push.API.Models;
 
-namespace DatingApp.API.Helpers
+namespace Push.API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
         public AutoMapperProfiles()
         {
-
-            // CreateMap<UserForUpdateDTO, User>();
-
+            CreateMap<User, UserForListDTO>();
+            CreateMap<Reminder, ReminderForReturnDTO>();
         }
 
     }
