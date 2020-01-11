@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { PushNotificationService } from 'ngx-push-notifications';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { ReminderService } from './_services/reminder.service';
 import { RemindersCardComponent } from './reminders/reminders-card/reminders-card.component';
+
+
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -63,6 +67,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       AlertifyService,
       ReminderService,
       AuthGuard,
+      PushNotificationService,
       { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
    ],
    bootstrap: [
