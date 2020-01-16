@@ -1,0 +1,21 @@
+<div class="col-lg-2 col-md-3 col-sm-6">
+  <form #addingForm="ngForm" (ngSubmit)="addReminder()" ngNativeValidate>
+
+    <div class="form-group">
+      <input type="datetime-local" class="form-control" name="responseTime" [(ngModel)]="reminderForCreate.responseTime"
+        placeholder="Response Time" required>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" name="text" [(ngModel)]="reminderForCreate.text" placeholder="Text"
+        required>
+    </div>
+
+    <div class="form-group text-center">
+      <button class="btn btn-success" [disabled]="!addingForm.valid" type="submit" routerLinkActive="router-link-active"
+        (click)="added()">Add</button>
+      <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    </div>
+
+  </form>
+</div>

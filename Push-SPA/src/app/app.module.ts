@@ -21,7 +21,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { ReminderService } from './_services/reminder.service';
 import { RemindersCardComponent } from './reminders/reminders-card/reminders-card.component';
-
+import { RemindersAddComponent } from './reminders/reminders-add/reminders-add.component';
 
 
 
@@ -43,7 +43,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       NavComponent,
       RegisterComponent,
       RemindersListComponent,
-      RemindersCardComponent
+      RemindersCardComponent,
+      RemindersAddComponent
    ],
    imports: [
       BrowserModule,

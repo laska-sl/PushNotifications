@@ -7,6 +7,7 @@ import { Reminder } from '../_models/reminder';
   providedIn: 'root'
 })
 export class ReminderService {
+
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
@@ -17,6 +18,10 @@ export class ReminderService {
 
   getReminder(userId: number, id: number) {
     return this.http.get<Reminder>(this.baseUrl + 'users/' + userId + '/reminders/' + id);
+  }
+
+  addReminder(userId: number, reminder: Reminder) {
+    return this.http.post(this.baseUrl + 'users/' + userId + '/reminders/', reminder);
   }
 
   updateReminder(userId: number, id: number, reminder: Reminder) {

@@ -26,9 +26,9 @@ namespace Push.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<Reminder> GetReminder(int userId, int id)
+        public async Task<Reminder> GetReminder(int id)
         {
-            var reminder = await _context.Reminders.Where(r => r.UserId == userId).FirstOrDefaultAsync(p => p.Id == id);
+            var reminder = await _context.Reminders.FirstOrDefaultAsync(p => p.Id == id);
             return reminder;
         }
 

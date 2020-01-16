@@ -12,6 +12,6 @@ namespace Push.API.Data
         Task<User> GetUser(int id);
         Task<IEnumerable<User>> GetUsers();
         Task<IEnumerable<Reminder>> GetReminders(int userId);
-        Task<Reminder> GetReminder(int userId, int id);
+        Task<Reminder> GetReminder(int id);
     }
 }

@@ -11,6 +11,8 @@ namespace Push.API.Helpers
         {
             CreateMap<User, UserForListDTO>();
             CreateMap<Reminder, ReminderForReturnDTO>();
+            CreateMap<ReminderForCreationDTO, Reminder>();
+            CreateMap<ReminderForUpdateDTO, Reminder>();
         }
 
     }
