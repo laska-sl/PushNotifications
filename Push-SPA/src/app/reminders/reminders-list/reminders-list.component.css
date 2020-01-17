@@ -1,5 +1,5 @@
 .reminder-adder:hover{
-    border: dotted 2px red !important;
+    border: dotted 2px lime !important;
     cursor: pointer;
-    color: red;
+    color: green;
 }

@@ -1,12 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">Push Notifications</a>
-
-    <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/reminders']">Reminders</a>
-      </li>
-    </ul>
+    <a class="navbar-brand" [routerLink]="['/reminders']">Push Notifications</a>
 
 
     <div *ngIf="loggedIn()" class="dropdown" dropdown>

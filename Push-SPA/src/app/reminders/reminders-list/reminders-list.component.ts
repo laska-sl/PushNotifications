@@ -5,7 +5,6 @@ import { Reminder } from 'src/app/_models/reminder';
 import { AuthService } from 'src/app/_services/auth.service';
 import { PushNotificationsService } from 'ng-push';
 import * as Schedule from 'node-schedule';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -20,52 +19,35 @@ export class RemindersListComponent implements OnInit {
   userId: number;
   addingMode = false;
   jobs = new Array();
-  subscribtion: Subscription;
 
   constructor(private authService: AuthService, private reminderService: ReminderService,
-    private pushNotifications: PushNotificationsService, private alertify: AlertifyService) { }
+    private pushNotificationsService: PushNotificationsService) { }
 
   ngOnInit() {
     this.loadAndInitializeReminders();
   }
 
   loadAndInitializeReminders() {
-    this.clearJobs();
     this.userId = this.authService.decodedToken.nameid;
-    this.subscribtion = this.reminderService.getReminders(this.userId).subscribe((reminders: Reminder[]) => {
+    this.reminderService.getReminders(this.userId).subscribe((reminders: Reminder[]) => {
       this.reminders = reminders;
-      for (const reminder of reminders) {
-        this.jobs.push((Schedule.scheduleJob(reminder.responseTime, () => this.pushNotification(reminder.text))));
-        console.log(reminder.id + ' ---- ' + reminder.responseTime + " ---- " + reminder.text);
-      }
+      this.initializeJobs();
     }, error => {
       console.log(error);
     });
   }
 
   pushNotification(text: string) {
-    this.pushNotifications.create(text).subscribe(
+    this.pushNotificationsService.create(text).subscribe(
       res => console.log(res),
       error => console.log(error)
     );
   }
 
-  addingToggle() {
-    this.addingMode = true;
-  }
-
-  cancelAddingMode(addingMode: boolean) {
-    this.addingMode = addingMode;
-  }
-
   addNewReminder($event) {
-    this.subscribtion = this.reminderService.getReminders(this.userId).subscribe((reminders: Reminder[]) => {
-      this.reminders = [];
-      this.clearJobs();
-      for (const reminder of reminders) {
-        this.reminders.push(reminder);
-        this.jobs.push((Schedule.scheduleJob(reminder.responseTime, () => this.pushNotification(reminder.text))));
-      }
+    this.reminderService.getReminders(this.userId).subscribe((reminders: Reminder[]) => {
+      this.reminders = reminders;
+      this.initializeJobs();
     }, error => {
       console.log(error);
     });
@@ -74,6 +56,7 @@ export class RemindersListComponent implements OnInit {
     this.addingMode = false;
   }
 
+
   deleteReminder($event) {
     const index = this.reminders.indexOf($event);
 
@@ -81,20 +64,29 @@ export class RemindersListComponent implements OnInit {
       this.reminders.splice(index, 1);
     }
 
-    this.clearJobs();
-
-    for (const reminder of this.reminders) {
-      this.jobs.push((Schedule.scheduleJob(reminder.responseTime, () => this.pushNotification(reminder.text))));
-    }
-
+    this.initializeJobs();
   }
 
-  clearJobs() {
+  // adds schedule jobs with push notifications of this.reminders
+  initializeJobs() {
     for (const job of this.jobs) {
       if (job != null) {
         job.cancel();
       }
     }
     this.jobs = new Array();
+    for (const reminder of this.reminders) {
+      this.jobs.push((Schedule.scheduleJob(reminder.responseTime, () => this.pushNotification(reminder.text))));
+    }
+  }
+
+  // opens adding form
+  addingToggle() {
+    this.addingMode = true;
+  }
+
+  // closes adding form
+  cancelAddingMode(addingMode: boolean) {
+    this.addingMode = addingMode;
   }
 }
