@@ -58,6 +58,10 @@ namespace Push.API
 
                 };
             });
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "Push-SPA/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -115,10 +119,10 @@ namespace Push.API
 
                 spa.Options.SourcePath = "Push-SPA";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
+                // if (env.IsDevelopment())
+                // {
+                spa.UseAngularCliServer(npmScript: "start");
+                // }
             });
         }
     }

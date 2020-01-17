@@ -4,5 +4,6 @@ obj
 *.db
 *.db-*
 appsettings.json
+appsettings.Development.json
 .vscode
 wwwroot
