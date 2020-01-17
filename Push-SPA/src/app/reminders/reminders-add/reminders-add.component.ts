@@ -8,6 +8,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
   templateUrl: './reminders-add.component.html',
   styleUrls: ['./reminders-add.component.css']
 })
+
 export class RemindersAddComponent implements OnInit {
   @Output() cancelAdding = new EventEmitter();
   @Output() addedReminder = new EventEmitter();
@@ -23,18 +24,13 @@ export class RemindersAddComponent implements OnInit {
     this.reminderService.addReminder(this.authService.decodedToken.nameid, this.reminderForCreate).subscribe(() => {
       this.alertify.success('Successfully added');
       this.reminderForCreate = {};
+      this.addedReminder.emit(this.reminderForCreate);
     }, error => {
       this.alertify.error(error);
     });
   }
 
-  added() {
-    this.addedReminder.emit(this.reminderForCreate);
-    console.log('added');
-  }
-
   cancel() {
     this.cancelAdding.emit(false);
-    console.log('cancelled');
   }
 }

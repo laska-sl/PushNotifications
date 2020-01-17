@@ -1,0 +1,21 @@
+.card-img-wrapper{
+    overflow: hidden;    
+    position: relative;
+}
+
+.reminder-icons{
+    /* position: absolute; */
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0;
+}
+
+.card:hover .reminder-icons{
+    opacity: 1;
+}
+
+.animate{
+    transition: all 0.3s ease-in-out;
+}
