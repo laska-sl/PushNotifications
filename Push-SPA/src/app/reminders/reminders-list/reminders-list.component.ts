@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertifyService } from '../../_services/alertify.service';
 import { ReminderService } from '../../_services/reminder.service';
 import { Reminder } from 'src/app/_models/reminder';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -24,6 +23,7 @@ export class RemindersListComponent implements OnInit {
     private pushNotificationsService: PushNotificationsService) { }
 
   ngOnInit() {
+    this.pushNotificationsService.requestPermission();
     this.loadAndInitializeReminders();
   }
 

@@ -22,6 +22,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { ReminderService } from './_services/reminder.service';
 import { RemindersCardComponent } from './reminders/reminders-card/reminders-card.component';
 import { RemindersAddComponent } from './reminders/reminders-add/reminders-add.component';
+import * as Schedule from 'node-schedule';
 
 
 
