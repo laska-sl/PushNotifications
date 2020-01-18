@@ -58,10 +58,7 @@ namespace Push.API
 
                 };
             });
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "Push-SPA/dist";
-            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -89,9 +86,6 @@ namespace Push.API
                                 });
             }
 
-            // app.UseHttpsRedirection();
-
-
             app.UseRouting();
 
             app.UseAuthentication();
@@ -99,30 +93,13 @@ namespace Push.API
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-
-            if (!env.IsDevelopment())
-            {
-                app.UseSpaStaticFiles();
-            }
-
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "Push-SPA";
-
-                // if (env.IsDevelopment())
-                // {
-                spa.UseAngularCliServer(npmScript: "start");
-                // }
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }
