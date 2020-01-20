@@ -1,12 +1,12 @@
-# PushNotifications
+# Push Notifications
 
-This project was generated with [.NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tutorials/cli-create-console-app) version 3.1.100 and [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+This project was generated with [.NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x) version 3.1.100 and [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
 ## Start the Project in Release Configuration
 1. Open a command prompt (terminal) under the root
 2. `cd Push.API`
 3. `dotnet run -c Release`
-4. Navigate to [http://localhost:5000/]
+4. Navigate to [http://localhost:5000/](http://localhost:5000/)
 
 ## Start the Project under Development Mode
 #### Starting the backend
@@ -17,4 +17,4 @@ This project was generated with [.NET Core CLI](https://docs.microsoft.com/en-us
 4. Open a command prompt (terminal) under the root
 5. `cd Push-SPA`
 6. `ng serve`
-7. Navigate to [http://localhost:5000/]
+7. Navigate to [http://localhost:4200/](http://localhost:4200/)
