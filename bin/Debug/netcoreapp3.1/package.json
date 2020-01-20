@@ -1,8 +1,0 @@
-{
-    "scripts": {
-        "install": "cd Push-SPA & npm install",
-        "start": "cd Push-SPA & npm start",
-        "build": "cd Push-SPA & npm run-script build",
-        "build-prd": "cd Push-SPA & npm run-script build-prd"
-    }
-}
