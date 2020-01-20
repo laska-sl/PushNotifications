@@ -38,7 +38,11 @@ export class RemindersListComponent implements OnInit {
   }
 
   pushNotification(text: string) {
-    this.pushNotificationsService.create(text).subscribe(
+    const options = {
+      body: text,
+      icon: 'assets/alarm.png'
+    };
+    this.pushNotificationsService.create("Derzhu v kurse", options).subscribe(
       res => console.log(res),
       error => console.log(error)
     );
