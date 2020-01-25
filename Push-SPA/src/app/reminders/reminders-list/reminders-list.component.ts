@@ -32,9 +32,8 @@ export class RemindersListComponent implements OnInit {
     this.reminderService.getReminders(this.userId).subscribe((reminders: Reminder[]) => {
       this.reminders = reminders;
       this.initializeJobs();
-    }, error => {
-      console.log(error);
-    });
+    }, error => { }
+    );
   }
 
   pushNotification(text: string) {
@@ -42,8 +41,8 @@ export class RemindersListComponent implements OnInit {
       icon: 'assets/alarm.png'
     };
     this.pushNotificationsService.create(text, options).subscribe(
-      res => console.log(res),
-      error => console.log(error)
+      res => { },
+      error => { }
     );
   }
 
@@ -51,9 +50,8 @@ export class RemindersListComponent implements OnInit {
     this.reminderService.getReminders(this.userId).subscribe((reminders: Reminder[]) => {
       this.reminders = reminders;
       this.initializeJobs();
-    }, error => {
-      console.log(error);
-    });
+    }, error => { }
+    );
 
 
     this.addingMode = false;
