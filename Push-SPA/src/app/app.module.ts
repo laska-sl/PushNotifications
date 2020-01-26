@@ -12,6 +12,7 @@ import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { AlertifyService } from './_services/alertify.service';
 import { appRoutes } from './routes';
 import { RemindersListComponent } from './reminders/reminders-list/reminders-list.component';
 import { PushNotificationsModule } from 'ng-push';
@@ -62,6 +63,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
    providers: [
       AuthService,
       ErrorInterceptorProvider,
+      AlertifyService,
       ReminderService,
       AuthGuard,
       { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
