@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ReminderService } from '../../_services/reminder.service';
 import { Reminder } from 'src/app/_models/reminder';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -12,7 +12,7 @@ import * as Schedule from 'node-schedule';
   styleUrls: ['./reminders-list.component.css']
 })
 
-export class RemindersListComponent implements OnInit {
+export class RemindersListComponent implements OnInit, OnDestroy {
   reminders: Reminder[];
   reminderForCreate: any = {};
   userId: number;
@@ -89,5 +89,13 @@ export class RemindersListComponent implements OnInit {
   // closes adding form
   cancelAddingMode(addingMode: boolean) {
     this.addingMode = addingMode;
+  }
+
+  ngOnDestroy() {
+    for (const job of this.jobs) {
+      if (job != null) {
+        job.cancel();
+      }
+    }
   }
 }

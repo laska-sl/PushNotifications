@@ -2,22 +2,16 @@
 
 This project was generated with [.NET Core SDK](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x) version 3.1.100 and [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
-## Using Docker
-1. `cd Push-SPA`
-2. `npm install`
-3. `ng build` to create wwwroot in API
-4. `cd .. && cd Push.API`
-5. `docker-compose up`
-
-
-## Start the Project in Release Configuration
+## Start the project with Docker
 1. Open a command prompt (terminal) under the root
-2. `cd Push.API`
-3. `dotnet run -c Release`
-*This command includes `dotnet restore`, `npm install`, `ng build` and `dotnet run` 
-4. Navigate to [http://localhost:5000/](http://localhost:5000/)
+2. `docker-compose up`
+3. Navigate to [http://localhost:5000/](http://localhost:5000/)
 
-## Start the Project under Development Mode
+## Start the project under Development Mode
+##### Requirements:
+* .NET Core SDK 3.1 or higher
+* Node.js 12.14.0 or higher
+
 #### Starting the backend
 1. Open a command prompt (terminal) under the root
 2. `cd Push.API`
