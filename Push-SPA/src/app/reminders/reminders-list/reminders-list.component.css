@@ -3,3 +3,7 @@
     cursor: pointer;
     color: lime;
 }
+
+.card{
+    height: 120px;
+}

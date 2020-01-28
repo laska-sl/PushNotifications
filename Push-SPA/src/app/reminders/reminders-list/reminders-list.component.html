@@ -5,21 +5,17 @@
     </div>
 
 
-    <div *ngIf="!addingMode" class="col-lg-3 col-md-4 col-sm-6">
-      <div class="card reminder-adder">
-        <div class="card-body p-1">
-          <h1 class="text-center display-1" (click)="addingToggle()">+</h1>
-        </div>
+    <div *ngIf="!addingMode" class="col-lg-3 col-md-4 col-sm-6" (click)="addingToggle()">
+      <div class="card reminder-adder text-center justify-content-center align-self-center">
+        <h1 class="display-1">+</h1>
       </div>
     </div>
 
     <div *ngIf="addingMode" class="col-lg-3 col-md-4 col-sm-6">
-      <div class="card mb-3">
-        <div class="card-body">
-          <app-reminders-add (addedReminder)="addNewReminder($event)" (cancelAdding)="cancelAddingMode($event)">
-          </app-reminders-add>
-        </div>
-      </div>
+
+      <app-reminders-add (addedReminder)="addNewReminder($event)" (cancelAdding)="cancelAddingMode($event)">
+      </app-reminders-add>
+
     </div>
 
 

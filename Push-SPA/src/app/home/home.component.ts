@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,11 @@ import { AuthService } from '../_services/auth.service';
 export class HomeComponent implements OnInit {
   registerMode = false;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if (!this.authService.loggedIn()) {
-
+    if (this.authService.loggedIn()) {
+      this.router.navigate(['/reminders']);
     }
 
   }

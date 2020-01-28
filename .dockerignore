@@ -1,7 +1,10 @@
 bin\
 obj\
 */node_modules
-.git
+*.git*
 *Dockerfile
-**docker-compose
+*docker-compose*
 *node_modules
+*/dist
+*/wwwroot
+*.db*
